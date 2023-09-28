@@ -34,8 +34,8 @@ loggers:
   kedro:
     level: INFO
 
-  hn_hiring:
-    level: INFO
+  hn:
+    level: DEBUG
 
 root:
   handlers: [rich, info_file_handler]

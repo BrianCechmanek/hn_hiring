@@ -2,3 +2,79 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+###### 01_RAW #####
+data_collection.user_profile:
+  type: json.JSONDataSet
+  filepath: data/01_raw/user_profile.json
+  versioned: True
+  layer: 01_raw
+
+data_collection.is_hiring_ids_str:
+  type: text.TextDataSet
+  filepath: data/01_raw/is_hiring_ids.txt
+  versioned: True
+  layer: 01_raw
+
+data_collection.not_hiring_ids_str:
+  type: text.TextDataSet
+  filepath: data/01_raw/not_hiring_ids.txt
+  versioned: True
+  layer: 01_raw
+
+data_collection.is_hiring_posts:
+  type: json.JSONDataSet
+  filepath: data/01_raw/is_hiring_posts.json
+  versioned: True
+  layer: 01_raw
+
+data_collection.is_hiring_comments:
+  type: json.JSONDataSet
+  filepath: data/01_raw/is_hiring_comments.json
+  versioned: True
+  layer: 01_raw
+
+###### 02_INTERMEDIATE #####
+data_collection.filtered_posts:
+  type: json.JSONDataSet
+  filepath: data/02_intermediate/filtered_posts.json
+  versioned: True
+  layer: 02_intermediate
+
+data_collection.post_comments:
+  type: json.JSONDataSet
+  filepath: data/02_intermediate/post_comments.json
+  versioned: True
+  layer: 02_intermediate
+
+data_collection.error_post_ids:
+  type: json.JSONDataSet
+  filepath: data/02_intermediate/error_post_ids.json
+  versioned: True
+  layer: 02_intermediate
+
+data_collection.users_karma:
+  type: json.JSONDataSet
+  filepath: data/02_intermediate/users_karma.json
+  versioned: True
+  layer: 02_intermediate
+
+###### 03_PRIMARY #####
+data_processing.companies_karma:
+  type: json.JSONDataSet
+  filepath: data/03_primary/companies_karma.json
+  versioned: True
+  layer: 03_primary
+
+data_processing.comment_text:
+  type: json.JSONDataSet
+  filepath: data/03_primary/processed_comment_text.json
+  versioned: True
+  layer: 03_primary
+
+##### 08_REPORTING #####
+models.companies_karma_rank_plot:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/companies_karma_rank_plot.png
+  versioned: True
+  layer: 08_reporting
