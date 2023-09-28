@@ -11,7 +11,7 @@ https://docs.pytest.org/en/latest/getting-started.html
 
 import pytest
 
-from hn.pipelines.data_processing.nodes import (
+from hn_hiring.pipelines.data_processing.nodes import (
     _get_company_from_comment,
     get_companies_post_karma,
 )

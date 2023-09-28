@@ -12,7 +12,7 @@ from datetime import datetime
 
 import pytest
 
-from hn.pipelines.data_collection.nodes import (
+from hn_hiring.pipelines.data_collection.nodes import (
     calc_comments_collecting,
     filter_posts_by_dates,
     get_post_by_id,
