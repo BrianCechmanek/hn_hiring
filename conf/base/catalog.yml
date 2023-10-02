@@ -72,6 +72,13 @@ data_processing.comment_text:
   versioned: True
   layer: 03_primary
 
+##### 04_feature #####
+data_processing.processed_text:
+  type: json.JSONDataSet
+  filepath: data/04_feature/processed_text_posts.json
+  versioned: True
+  layer: 04_feature
+
 ##### 08_REPORTING #####
 models.companies_karma_rank_plot:
   type: matplotlib.MatplotlibWriter

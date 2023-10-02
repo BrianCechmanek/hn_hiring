@@ -5,13 +5,53 @@ generated using Kedro 0.18.12
 
 import logging
 import re
-from typing import Any, Dict, Tuple
+from collections import deque
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 logger = logging.getLogger(__name__)
 
 
-def process_text(params: Dict):
-    ...
+def process_text(
+    posts: Dict[str, Any],
+    funcs: Optional[List[str]],
+    text_params: Optional[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Process post text by a variable list of functions.
+
+    Args:
+        posts: Dict: hn posts, in full API json
+        funcs: str: list of functions to apply, ordered
+        text_params: str: dict of params that can be fed into funcs, keyed by func name
+    Returns:
+        post-processed posts, where the text fields have been modified.
+    """
+
+    drop_keys = []
+    for key, post in posts.items():
+        post_text = post.get("text", "")
+        for func in funcs:
+            # Assuming the functions are available in the global scope
+            func_params = text_params.get(func, {})
+            post_text = globals()[func](post_text, func_params)
+            if post_text is None:
+                drop_keys.append(key)
+
+    # Filter out posts with None in the text field
+    list(map(posts.pop, drop_keys))
+
+    return posts
+
+
+def filter_jobs(text: str, filters: List[str]) -> Union[str, None]:
+    """filter a post's text for a list of jobs.
+
+    Not case sensitive. no fuzzy matching.
+    """
+
+    if any([job.lower() in text.lower().split() for job in filters]):
+        return text
+    else:
+        return None
 
 
 def _get_company_from_comment(text: str) -> str:

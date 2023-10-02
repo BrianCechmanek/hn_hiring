@@ -14,9 +14,13 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=process_text,
-                inputs="data_collection.post_comments",
-                outputs=None,  # "processed_comments_text",
-                name="get_user_submitted",
+                inputs=[
+                    "data_collection.post_comments",
+                    "params:funcs",
+                    "params:text_params",
+                ],
+                outputs="processed_text",  # "processed_comments_text",
+                name="process_post_text",
             ),
             node(
                 func=get_companies_post_karma,

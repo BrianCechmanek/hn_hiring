@@ -5,5 +5,15 @@
 # Link: https://docs.kedro.org/en/0.18.12/kedro_project_setup/configuration.html#parameters
 
 data_processing:
-  text_params: None
-  funcs: None
+  funcs: [filter_jobs]
+  text_params:
+    {
+      "filter_jobs":
+        [
+          "data scientist",
+          "machine learning engineer",
+          "machine learning",
+          "ai",
+          "ml",
+        ],
+    }
