@@ -3,7 +3,8 @@ This is a boilerplate pipeline 'models'
 generated using Kedro 0.18.12
 """
 
-from typing import Dict, Tuple
+import re
+from typing import Any, Dict, Tuple
 
 import matplotlib.pyplot as plt
 
@@ -42,4 +43,34 @@ def plot_companies_karma(data: Dict[str, Tuple[str, str, int]], n: int = 10):
     ax.set_xlabel("Company Karma")
     ax.set_title("Companies' karma rank barh plot")
     ax.invert_yaxis()  # Flip the y-axis
+    return plt
+
+
+def plot_processed_text_posts(posts: Dict[str, Any]):
+    text = "\n".join(
+        [re.escape(post.get("text")) for post in posts.values()]
+    )  # Newlines represented by '\n' in Python
+
+    # Create the figure and axes
+    fig, ax = plt.subplots()
+
+    # Create the plot
+    # ax.plot([2, 3, 1])
+
+    # Add the annotations
+    props = dict(boxstyle="round", facecolor="wheat", alpha=0.5)
+    # Place a text box in upper left in axes coords
+    ax.text(
+        0.05,
+        0.95,
+        text,
+        transform=ax.transAxes,
+        fontsize=14,
+        verticalalignment="top",
+        bbox=props,
+    )
+
+    # Set the size of the figure
+    fig.set_size_inches(10, len(posts))
+
     return plt

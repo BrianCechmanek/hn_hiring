@@ -6,11 +6,12 @@
 
 The data processing pipeline is to set up the raw data in a manner that readies it for arbitrary modelling purposes. New processing can be added as more models are added.
 
-At this time, the text processing is a pass-through function.
+At this time, the text processing will only exact-match filter for some keywords, if provided in params.
 
 ## Pipeline inputs
 
-`data_collection.post_comments`, `data_collection.users_karma` are used to construct a simple karma-by-company ranking.
+- `data_collection.post_comments`, `data_collection.users_karma` are used to construct a simple karma-by-company ranking
+- `conf/base/parameters/data_processing.yml` : parameters for processing of hn posts. `funcs` : processing functions to use. `text_params` : params to feed into funcs
 
 ## Pipeline outputs
 
