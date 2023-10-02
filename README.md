@@ -2,6 +2,14 @@
 
 ## Executive Summary
 
+I found myself:
+
+1. Needing to find a new job
+2. Wanting to use Kedro more
+3. (Probably) needing to add some stuff to my GH profile
+
+So I made this.
+
 A Data Engineering-heavy collection and processing pipeline gather's HN Who Is Hiring posts, with minimal analysis.
 
 Posts are gathered, by one or more months, and semi-filtered for provided keywords, such as `data scientist`, `machine learning engineer`. No fuzzy matching is done.
