@@ -28,6 +28,8 @@ This repo runs on [kedro](www.kedro.org). Requirements are standard python (`~=3
 
 Outputs will be in `data/*`
 
+7. (optional, recommended) run streamlit viewer: `$ streamlit run src/app/viz.py` (opens browser window)
+
 # Pipelines
 
 The code is strictly split into discrite pipelines. Each can be run separately, though an initial sequential run is required (to collect and process the data).
@@ -60,6 +62,11 @@ At this time, I'm not training, running, or evaluating any models. I May add som
 
 I do not use notebooks at this time.
 
+## App
+
+A _very_ minimal streamlit app is writen to scan through the resulting posts. It covered my bases, so I stopped there.
+
+
 # HN Who is Hiring Post Assumptions
 
 - I don't think the "freelancer" or "wants to be hired" posts have any relevance
@@ -67,8 +74,9 @@ I do not use notebooks at this time.
 # Additional Info
 
 - [pre-commit](https://pre-commit.com/) is used for formatting and linting. Feel free to install it, if you're going to do anything to the code. I just like using it
-- If you wish to run tests, you can use the (deprecated) `kedro test`, which handles package importing. Else you will have to install the package: `python -m pip install -e .` followed by `pytest .` (or whichever selection you desire)
+- If you wish to run tests, you can run `$ pytest .`. You will have to install the package: `python -m pip install -e .` followed by `pytest .` (or whichever selection you desire)
 - I wanted to do some async stuff with the API collection, but kedro doesn't handle it natively, and writing an AsyncRunner was WAY out of scope
+- I read _somewhere(!)_ that the way to go about HN posts is through big query, but as of Feb 2024, my weak googling only pulls up results for old (2015) datasets there. If I can find, I'll re-write the `data_collection` pipe for BQ instead
 - Children of posts are ignored: in general Who's Hiring posts shouldn't get replies; their value would be unclear; I wan't to avoid a recursion task at the moment
 - Sometimes a poster will reply to themselves with additonal job info. Looking at you Lloyd's. Thus, I'm not worried at this time about losing descendants.
 

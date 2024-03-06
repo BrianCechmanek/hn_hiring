@@ -12,5 +12,4 @@ import pytest
 
 
 @pytest.mark.skip(reason="I don't know how to test plotting")
-def test_plot_companies_karma():
-    ...
+def test_plot_companies_karma(): ...

@@ -6,9 +6,11 @@ kedro-telemetry>=0.3.1
 kedro-viz>=6.7.0
 matplotlib~=3.8.3
 notebook
+pre-commit~=3.6.2
 pytest~=7.2
 pytest-cov~=3.0
 pytest-mock>=1.7.1, <2.0
 ruff~=0.1.8
 scikit-learn~=1.0
 seaborn~=0.12.1
+streamlit~=1.31.1

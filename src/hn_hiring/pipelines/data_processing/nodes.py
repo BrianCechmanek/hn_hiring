@@ -5,7 +5,6 @@ generated using Kedro 0.18.12
 
 import logging
 import re
-from collections import deque
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 logger = logging.getLogger(__name__)
