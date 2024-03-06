@@ -5,90 +5,118 @@
 
 ###### 01_RAW #####
 data_collection.user_profile:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/01_raw/user_profile.json
   versioned: True
-  layer: 01_raw
+  metadata:
+    kedro-viz:
+      layer: raw
 
 data_collection.is_hiring_ids_str:
-  type: text.TextDataSet
+  type: text.TextDataset
   filepath: data/01_raw/is_hiring_ids.txt
   versioned: True
-  layer: 01_raw
+  metadata:
+    kedro-viz:
+      layer: raw
 
 data_collection.not_hiring_ids_str:
-  type: text.TextDataSet
+  type: text.TextDataset
   filepath: data/01_raw/not_hiring_ids.txt
   versioned: True
-  layer: 01_raw
+  metadata:
+    kedro-viz:
+      layer: raw
 
 data_collection.is_hiring_posts:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/01_raw/is_hiring_posts.json
   versioned: True
-  layer: 01_raw
+  metadata:
+    kedro-viz:
+      layer: raw
 
 data_collection.is_hiring_comments:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/01_raw/is_hiring_comments.json
   versioned: True
-  layer: 01_raw
+  metadata:
+    kedro-viz:
+      layer: raw
 
 ###### 02_INTERMEDIATE #####
 data_collection.filtered_posts:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/02_intermediate/filtered_posts.json
   versioned: True
-  layer: 02_intermediate
+  metadata:
+    kedro-viz:
+    layer: intermediate
 
 data_collection.post_comments:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/02_intermediate/post_comments.json
   versioned: True
-  layer: 02_intermediate
+  metadata:
+    kedro-viz:
+      layer: intermediate
 
 data_collection.error_post_ids:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/02_intermediate/error_post_ids.json
   versioned: True
-  layer: 02_intermediate
+  metadata:
+    kedro-viz:
+      layer: intermediate
 
 data_collection.users_karma:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/02_intermediate/users_karma.json
   versioned: True
-  layer: 02_intermediate
+  metadata:
+    kedro-viz:
+      layer: intermediate
 
 ###### 03_PRIMARY #####
 data_processing.companies_karma:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/03_primary/companies_karma.json
   versioned: True
-  layer: 03_primary
+  metadata:
+    kedro-viz:
+      layer: primary
 
 data_processing.comment_text:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/03_primary/processed_comment_text.json
   versioned: True
-  layer: 03_primary
+  metadata:
+    kedro-viz:
+      layer: primary
 
 ##### 04_feature #####
 data_processing.processed_text_posts:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/04_feature/processed_text_posts.json
   versioned: True
-  layer: 04_feature
+  metadata:
+    kedro-viz:
+      layer: feature
 
 ##### 08_REPORTING #####
 models.companies_karma_rank_plot:
   type: matplotlib.MatplotlibWriter
   filepath: data/08_reporting/companies_karma_rank_plot.png
   versioned: True
-  layer: 08_reporting
+  metadata:
+    kedro-viz:
+      layer: reporting
 
 ##### 08_REPORTING #####
 models.processed_text_posts_plot:
   type: matplotlib.MatplotlibWriter
   filepath: data/08_reporting/processed_text_posts_plot.png
   versioned: True
-  layer: 08_reporting
+  metadata:
+    kedro-viz:
+      layer: reporting

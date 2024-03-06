@@ -171,7 +171,7 @@ def filter_posts_by_dates(
         )
     ]
 
-    filtered_timestamps = [int(dt.strftime("%s")) for dt in filtered_datetimes]
+    filtered_timestamps = [int(dt.timestamp()) for dt in filtered_datetimes]
 
     filtered_posts = {
         k: v for k, v in posts.items() if v["time"] in filtered_timestamps
