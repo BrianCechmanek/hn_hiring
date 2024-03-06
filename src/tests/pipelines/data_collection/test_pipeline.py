@@ -510,7 +510,7 @@ def test_filter_posts_by_dates(
     assert len(filtered_posts) == 1
     assert list(filtered_posts.keys())[0] == "36573871"
     assert [v["time"] for _, v in filtered_posts.items()] == [
-        int(dt.strftime("%s")) for dt in expected
+        int(dt.timestamp()) for dt in expected
     ]
 
 
