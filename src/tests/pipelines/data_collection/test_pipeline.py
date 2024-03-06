@@ -11,7 +11,6 @@ https://docs.pytest.org/en/latest/getting-started.html
 from datetime import datetime
 
 import pytest
-
 from hn_hiring.pipelines.data_collection.nodes import (
     calc_comments_collecting,
     filter_posts_by_dates,
@@ -529,9 +528,8 @@ def test_get_post_comments(hn_comment_parent):
 
 def test_calc_comments_collecting(hn_wih_actual_posts):
     num_comments = calc_comments_collecting(hn_wih_actual_posts)
-    assert num_comments == 3
+    assert num_comments == 3  # noqa : PLR2004
 
 
 @pytest.mark.skip(reason="requires a dead profile")
-def test_get_users_karma():
-    ...
+def test_get_users_karma(): ...

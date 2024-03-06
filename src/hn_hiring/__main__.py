@@ -1,6 +1,7 @@
 """hn_hiring file for ensuring the package is executable
 as `hn-hiring` and `python -m hn_hiring`
 """
+
 import importlib
 from pathlib import Path
 

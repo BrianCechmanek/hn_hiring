@@ -8,9 +8,7 @@ in the official documentation:
 https://docs.pytest.org/en/latest/getting-started.html
 """
 
-
 import pytest
-
 from hn_hiring.pipelines.data_processing.nodes import (
     _get_company_from_comment,
     get_companies_post_karma,
@@ -34,8 +32,7 @@ def hn_comment_expected():
 
 
 @pytest.mark.skip(reason="process_text not yet implemented")
-def test_process_text():
-    ...
+def test_process_text(): ...
 
 
 @pytest.mark.parametrize(
@@ -66,4 +63,4 @@ def test_get_companies_post_karma(hn_comment_expected, users_karma):
     assert list(companies_karma.keys())[0] == "36963693"
     assert companies_karma["36963693"][0] == "SmarterDx"
     assert companies_karma["36963693"][1] == "dokein"
-    assert companies_karma["36963693"][2] >= 750
+    assert companies_karma["36963693"][2] >= 750  # noqa : PLR2004
