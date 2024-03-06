@@ -51,7 +51,7 @@ data_collection.filtered_posts:
   versioned: True
   metadata:
     kedro-viz:
-    layer: intermediate
+      layer: intermediate
 
 data_collection.post_comments:
   type: json.JSONDataset

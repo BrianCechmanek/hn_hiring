@@ -19,7 +19,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:funcs",
                     "params:text_params",
                 ],
-                outputs="processed_text",  # "processed_comments_text",
+                outputs="processed_text_posts",  # "processed_comments_text",
                 name="process_post_text",
             ),
             node(
