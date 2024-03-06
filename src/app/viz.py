@@ -1,6 +1,7 @@
 # Front-end visualizer in streamlit
 
 
+import pandas as pd
 import streamlit as st
 from kedro.config import OmegaConfigLoader
 from kedro.framework.context import KedroContext, KedroContextError
@@ -30,7 +31,9 @@ except KedroContextError as exc:
 
 # Load the dataset
 catalog = context.catalog
-print(catalog.list())
-hiring_df = catalog.load("data_processing.processed_text_posts")
-print(f"{hiring_df.shape = }")
-print("-----END-----")
+hiring_json = catalog.load("data_processing.processed_text_posts")
+hiring_df = pd.DataFrame(hiring_json).T
+
+##### STREAMLIT PAGE #####
+st.title("HN: Who's Hiring")
+st.dataframe(hiring_df.drop(columns=["id", "time", "type", "parent"]), hide_index=True)
