@@ -15,5 +15,7 @@ data_processing:
           "machine learning",
           "ai",
           "ml",
+          "nlp",
+          "llm",
         ],
     }

@@ -6,5 +6,5 @@
 
 data_collection:
   user_name: "whoishiring"
-  post_dates: ["March 2024"]
-  api_ms_sleep_range: [100, 400]
+  post_dates: ["August 2024"]
+  api_ms_sleep_range: [100, 500]
