@@ -3,8 +3,7 @@ This is a boilerplate pipeline 'models'
 generated using Kedro 0.18.12
 """
 
-from kedro.pipeline import Pipeline, node
-from kedro.pipeline.modular_pipeline import pipeline
+from kedro.pipeline import Pipeline, node, pipeline
 
 from .nodes import plot_companies_karma, plot_processed_text_posts
 
@@ -27,7 +26,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         ]
     )
     return pipeline(
-        pipe=ppl_instance,
+        ppl_instance,
         inputs=[
             "data_processing.companies_karma",
             "data_processing.processed_text_posts",

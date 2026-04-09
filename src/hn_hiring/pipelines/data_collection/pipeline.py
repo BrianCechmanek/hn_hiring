@@ -3,8 +3,7 @@ This is a boilerplate pipeline 'data_collection'
 generated using Kedro 0.18.12
 """
 
-from kedro.pipeline import Pipeline, node
-from kedro.pipeline.modular_pipeline import pipeline
+from kedro.pipeline import Pipeline, node, pipeline
 
 from .nodes import (
     calc_comments_collecting,
@@ -78,7 +77,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         ]
     )
     return pipeline(
-        pipe=ppl_instance,
+        ppl_instance,
         inputs=None,
         namespace="data_collection",
     )

@@ -36,7 +36,7 @@ namespaces = false
 [tool.kedro]
 package_name = "hn_hiring"
 project_name = "hn_hiring"
-kedro_init_version = "0.19.3"
+kedro_init_version = "1.3.1"
 tools = ['Linting', 'Testing', 'Custom Logging', 'Documentation', 'Data Structure', 'Kedro Viz']
 example_pipeline = "False"
 source_dir = "src"
@@ -68,3 +68,6 @@ lint.select = [
 ]
 lint.ignore = ["E501"]  # Ruff format takes care of line-too-long
 exclude = ["docs"]
+
+[tool.kedro_telemetry]
+project_id = "4122cb58c4314bd88b24c98dc3c47ce1"

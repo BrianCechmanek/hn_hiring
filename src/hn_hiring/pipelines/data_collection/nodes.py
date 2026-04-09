@@ -4,12 +4,27 @@ generated using Kedro 0.18.12
 """
 
 import logging
+import ssl
 from datetime import datetime
 from random import randint
 from time import sleep
 from typing import Any, Dict, List, Optional, Tuple
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.ssl_ import create_urllib3_context
+
+
+class _IgnoreEOFAdapter(HTTPAdapter):
+    def init_poolmanager(self, *args, **kwargs):
+        ctx = create_urllib3_context()
+        ctx.options |= ssl.OP_IGNORE_UNEXPECTED_EOF
+        kwargs["ssl_context"] = ctx
+        return super().init_poolmanager(*args, **kwargs)
+
+
+_session = requests.Session()
+_session.mount("https://", _IgnoreEOFAdapter())
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +33,7 @@ def get_user(user: str = "whoishiring") -> Dict[str, Any]:
     """For any user, usually whoishiring, get a list of their submission.
     The"""
     try:
-        response = requests.get(
+        response = _session.get(
             f"https://hacker-news.firebaseio.com/v0/user/{user}.json?print=pretty"
         )
         response.raise_for_status()
@@ -30,7 +45,7 @@ def get_user(user: str = "whoishiring") -> Dict[str, Any]:
 def get_user_submitted(user: str = "whoishiring") -> List[int]:
     """For any user, get the List[id] of their submitted."""
     try:
-        response = requests.get(
+        response = _session.get(
             f"https://hacker-news.firebaseio.com/v0/user/{user}.json?print=pretty"
         )
         response.raise_for_status()
@@ -68,7 +83,7 @@ def get_submitted(post: Dict[str, Any]) -> List[int]:
 
 def get_post_by_id(id: int) -> Dict[str, Any]:
     try:
-        response = requests.get(
+        response = _session.get(
             f"https://hacker-news.firebaseio.com/v0/item/{id}.json?print=pretty"
         )
         response.raise_for_status()
